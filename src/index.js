@@ -1,19 +1,19 @@
 #!/usr/bin/env node
 
-const { Command } = require('commander');
-const fs = require('fs-extra');
-const path = require('path');
-const ora = require('ora');
-const { componentTemplate, customHookTemplate } = require('./templates/dashboardTemplate');
+import { Command } from 'commander';
+import fs from 'fs-extra';
+import path from 'path';
+import ora from 'ora';
+import { componentTemplate, customHookTemplate } from './templates/dashboardTemplate.js';
 
 const program = new Command();
 
-const packageJson = require('../package.json');
+const packageJson = await import('../package.json', { assert: { type: 'json' } });
 
 program
     .name('wixter')
     .description('A CLI tool for generating React components, custom hooks, and API functions.')
-    .version(packageJson.version);
+    .version(packageJson.default.version);
 
 // Command for creating components and hooks
 program
@@ -24,7 +24,7 @@ program
     .action(async (options) => {
         if (options.component) {
             const componentName = options.component;
-            const componentDir = path.join(__dirname, `src/dashboard/components/${componentName}`);
+            const componentDir = path.join(process.cwd(), `src/dashboard/components/${componentName}`);
             const spinner = ora(`Creating component ${componentName}...`).start();
 
             try {
@@ -41,7 +41,7 @@ program
 
         if (options.hook) {
             const hookName = options.hook;
-            const hookDir = path.join(__dirname, `src/hooks/${hookName}`);
+            const hookDir = path.join(process.cwd(), `src/hooks/${hookName}`);
             const spinner = ora(`Creating hook ${hookName}...`).start();
 
             try {
@@ -75,7 +75,7 @@ program
             process.exit(1);
         }
 
-        const functionDir = path.join(__dirname, `src/api/functions/${functionName}`);
+        const functionDir = path.join(process.cwd(), `src/api/functions/${functionName}`);
         const spinner = ora(`Creating function ${functionName}...`).start(); // Start spinner
 
         try {
