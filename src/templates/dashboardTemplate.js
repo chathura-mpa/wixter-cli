@@ -1,4 +1,4 @@
-const componentTemplate = (componentName: string) => {
+const componentTemplate = (componentName) => {
     const interfaceName = `${componentName}Props`;
 
     return `
@@ -19,7 +19,7 @@ const componentTemplate = (componentName: string) => {
     `;
 };
 
-const customHookTemplate = (hookName: string) => {
+const customHookTemplate = (hookName) => {
     return `
         import { useState, useEffect } from 'react';
 
