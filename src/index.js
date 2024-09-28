@@ -4,11 +4,11 @@ const { Command } = require('commander');
 const fs = require('fs-extra');
 const path = require('path');
 const ora = require('ora');
-const { componentTemplate, customHookTemplate } = require('./src/templates/dashboardTemplate');
+const { componentTemplate, customHookTemplate } = require('./templates/dashboardTemplate');
 
 const program = new Command();
 
-const packageJson = require('./package.json');
+const packageJson = require('../package.json');
 
 program
     .name('wixter')

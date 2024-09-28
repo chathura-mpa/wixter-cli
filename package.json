@@ -9,7 +9,7 @@
     "ora": "^8.1.0"
   },
   "bin": {
-    "wixter": "./index.js"
+    "wixter": "./src/index.js"
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.4"
