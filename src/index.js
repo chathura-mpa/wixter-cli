@@ -4,7 +4,7 @@ import { Command } from 'commander';
 import fs from 'fs-extra';
 import path from 'path';
 import ora from 'ora';
-import { componentTemplate, customHookTemplate } from './templates/dashboardTemplate';
+import { componentTemplate, customHookTemplate } from './templates/dashboardTemplate.js';
 
 const program = new Command();
 
